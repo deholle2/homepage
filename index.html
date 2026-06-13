@@ -1,76 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dave Holle | Cybersecurity Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David E. Holle II — Security Engineering Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --ink:       #0f1117;
+    --ink-soft:  #4a5060;
+    --ink-muted: #8a90a0;
+    --rule:      #d8dce6;
+    --bg:        #f7f8fa;
+    --surface:   #ffffff;
+    --accent:    #1a56db;      /* electric blue — network signal */
+    --accent2:   #0d3a8c;
+    --tag-bg:    #e8edf8;
+    --tag-text:  #1a3a7a;
+    --mono:      'IBM Plex Mono', monospace;
+    --sans:      'Inter', sans-serif;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ─────────────────────────────── */
+  header {
+    background: var(--ink);
+    color: #fff;
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle circuit-trace background lines */
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, rgba(26,86,219,.12) 1px, transparent 1px),
+      linear-gradient(0deg,  rgba(26,86,219,.12) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .8rem;
+  }
+
+  header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .tagline {
+    margin-top: .9rem;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.7);
+    max-width: 560px;
+  }
+
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.6rem;
+    margin-top: 1.8rem;
+  }
+
+  .contact-bar a, .contact-bar span {
+    font-family: var(--mono);
+    font-size: .82rem;
+    color: rgba(255,255,255,.65);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    transition: color .2s;
+  }
+
+  .contact-bar a:hover { color: #fff; }
+
+  .contact-bar .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── LAYOUT ─────────────────────────────── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    main { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* ── SECTION LABELS ─────────────────────── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ── SUMMARY ─────────────────────────────── */
+  .summary p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  /* ── EXPERIENCE ──────────────────────────── */
+  .experience { margin-top: 2.8rem; }
+
+  .job { margin-bottom: 2.4rem; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: .2rem;
+    margin-bottom: .2rem;
+  }
+
+  .job-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .job-dates {
+    font-family: var(--mono);
+    font-size: .75rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    padding-top: .15rem;
+  }
+
+  .job-company {
+    font-size: .88rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: .75rem;
+  }
+
+  .job-company span {
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  .job ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .job ul li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-size: .93rem;
+    color: var(--ink-soft);
+    margin-bottom: .42rem;
+    line-height: 1.6;
+  }
+
+  .job ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: .7rem;
+    top: .25em;
+  }
+
+  .job-divider {
+    height: 1px;
+    background: var(--rule);
+    margin-bottom: 2.4rem;
+  }
+
+  /* ── SIDEBAR ─────────────────────────────── */
+  .sidebar { display: flex; flex-direction: column; gap: 2.4rem; }
+
+  .sidebar-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.4rem 1.4rem 1.5rem;
+  }
+
+  /* Skills */
+  .skill-group { margin-bottom: 1.1rem; }
+  .skill-group:last-child { margin-bottom: 0; }
+
+  .skill-group-name {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: .45rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: .76rem;
+    font-weight: 500;
+    padding: .22rem .6rem;
+    border-radius: 4px;
+  }
+
+  /* Certs */
+  .cert-list { list-style: none; }
+
+  .cert-list li {
+    font-size: .85rem;
+    color: var(--ink-soft);
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: .6rem;
+  }
+
+  .cert-list li:last-child { border-bottom: none; }
+
+  .cert-year {
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+
+  /* Education */
+  .edu-name { font-size: .93rem; font-weight: 600; color: var(--ink); }
+  .edu-detail { font-size: .83rem; color: var(--ink-muted); margin-top: .2rem; }
+
+  /* ── FOOTER ─────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--rule);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+</style>
+</head>
 <body>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Dave Holle</h1>
-        <h2>Cybersecurity & IT Professional</h2>
-        <p>Zero Trust • Zscaler • Network Security • CISSP (In Progress)</p>
-        <a class="btn" href="resume.pdf" target="_blank">Download Resume</a>
+<header>
+  <div class="header-inner">
+    <p class="eyebrow">Security Engineering Leader · 15+ Years</p>
+    <h1>David Eric Holle II</h1>
+    <p class="tagline">Enterprise security transformation, Zero Trust architecture, and secure infrastructure operations at scale.</p>
+    <div class="contact-bar">
+      <span><span class="dot"></span>Lakewood, CO</span>
+      <a href="mailto:daveholle@outlook.com"><span class="dot"></span>daveholle@outlook.com</a>
+      <a href="tel:9286991474"><span class="dot"></span>928-699-1474</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ── LEFT COLUMN ── -->
+  <div class="left-col">
+
+    <section class="summary">
+      <p class="section-label">Summary</p>
+      <p>Security engineering leader with 15+ years driving enterprise-scale security transformations, Zero Trust adoption, and secure infrastructure operations. Proven success modernizing legacy platforms, leading cross-functional engineering teams, and improving user experience across large organizations. Deep expertise in network security, endpoint protection, firewalls, web proxies, and incident response.</p>
     </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-        <h3>About Me</h3>
-        <p>
-            I'm a cybersecurity professional focused on Zero Trust architecture, secure network design, 
-            and cloud‑based security solutions. I work extensively with Zscaler technologies and am 
-            actively preparing for the CISSP certification. I enjoy solving complex security challenges 
-            and building resilient, scalable systems.
-        </p>
-    </section>
+    <section class="experience">
+      <p class="section-label">Experience</p>
 
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-        <h3>Skills</h3>
-        <ul class="skills">
-            <li>Zscaler ZIA / ZPA</li>
-            <li>Zero Trust Architecture</li>
-            <li>Network Security</li>
-            <li>Firewall & VPN Technologies</li>
-            <li>Identity & Access Management</li>
-            <li>SIEM / Log Analysis</li>
-            <li>Cloud Security</li>
-            <li>CISSP (In Progress)</li>
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Senior Manager, Security Development &amp; Engineering</span>
+          <span class="job-dates">Nov 2020 – Mar 2026</span>
+        </div>
+        <div class="job-company">Charles Schwab Corporation <span>— Lone Tree, CO</span></div>
+        <ul>
+          <li>Led Zero Trust transformation using the Zscaler platform across network edge, endpoint security, and application access.</li>
+          <li>Directed decommissioning of a legacy proxy platform, migrating 4,000+ applications and 44,000 employees to Zscaler.</li>
+          <li>Implemented UX monitoring with Zscaler ZDX to proactively identify and resolve performance issues.</li>
+          <li>Collaborated with endpoint security, firewall, and Service Desk teams to resolve complex developer and end-user issues.</li>
+          <li>Provided Tier-3 support for proxy and secure web gateway issues.</li>
         </ul>
-    </section>
+      </div>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-        <h3>Projects</h3>
+      <div class="job-divider"></div>
 
-        <div class="project">
-            <h4>Zero Trust Home Lab</h4>
-            <p>
-                Built a full Zero Trust environment using Zscaler ZPA, identity‑based segmentation, 
-                and policy‑driven access controls. Demonstrated secure remote access without VPNs.
-            </p>
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Information Security Engineer</span>
+          <span class="job-dates">Sep 2014 – Jun 2020</span>
         </div>
+        <div class="job-company">Open Technology Solutions, LLC <span>— Centennial, CO</span></div>
+        <ul>
+          <li>Delivered security services supporting backend operations for three mid-sized credit unions and a consolidated call center.</li>
+          <li>Managed 25+ Cisco and Check Point firewalls; performed compliance reporting with FireMon and troubleshooting with ArcSight and Splunk.</li>
+          <li>Maintained IDS/IPS services using Sourcefire.</li>
+          <li>Served as security liaison to DevOps, ensuring secure deployment practices with Imperva WAF and Octopus.</li>
+          <li>Administered VPN access (Cisco AnyConnect, Pulse Juniper) and Symantec Blue Coat web proxy.</li>
+          <li>Managed MFA (Duo), application control (VMware Carbon Black Protect), and behavioral analytics (InsightDR).</li>
+          <li>Led incident detection and response, including playbook development and tabletop exercises.</li>
+        </ul>
+      </div>
 
-        <div class="project">
-            <h4>Network Hardening & Monitoring</h4>
-            <p>
-                Implemented network segmentation, firewall rule optimization, and SIEM‑based alerting 
-                to improve visibility and reduce attack surface.
-            </p>
-        </div>
+      <div class="job-divider"></div>
 
-        <div class="project">
-            <h4>Secure Cloud Access Architecture</h4>
-            <p>
-                Designed a scalable cloud access model using Zero Trust principles, identity‑aware 
-                routing, and encrypted traffic inspection.
-            </p>
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">IT Support Specialist</span>
+          <span class="job-dates">Jul 2012 – Sep 2014</span>
         </div>
-    </section>
+        <div class="job-company">Credit Union of Denver <span>— Lakewood, CO</span></div>
+        <ul>
+          <li>Primary support contact for Windows 7 workstations in an AD DS environment.</li>
+          <li>Managed help desk ticketing, change management, and asset tracking using BMC Track-It.</li>
+          <li>Reduced service desk tickets by nearly 50% after leading a company-wide migration from Windows XP to Windows 7.</li>
+          <li>Performed server backup monitoring (Symantec Backup Exec) and patch management (VMware Shavlik Protect).</li>
+        </ul>
+      </div>
+
+      <div class="job-divider"></div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Product Support Specialist</span>
+          <span class="job-dates">Jun 2010 – Jun 2012</span>
+        </div>
+        <div class="job-company">State Employees Credit Union of New Mexico <span>— Santa Fe, NM</span></div>
+        <ul>
+          <li>Supported end-users of financial applications and commercial software.</li>
+          <li>Built an intranet with real-time messaging and document control using Drupal.</li>
+          <li>Tested, evaluated, and trained staff on new versions of financial software.</li>
+          <li>Provided second-tier support for software, workstation, and networking issues.</li>
+        </ul>
+      </div>
 
     <!-- CONTACT -->
     <section class="section" id="contact">
@@ -82,10 +406,85 @@
             <a href="https://github.com/deholle2">GitHub</a>
         </p>
     </section>
+  </div>
 
-    <footer>
-        <p>© 2026 Dave Holle</p>
-    </footer>
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <p class="section-label">Core Skills</p>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Zero Trust &amp; SASE</div>
+        <div class="tags">
+          <span class="tag">Zscaler ZIA/ZPA</span>
+          <span class="tag">ZDX</span>
+          <span class="tag">Zero Trust Architecture</span>
+          <span class="tag">SASE</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Network Security</div>
+        <div class="tags">
+          <span class="tag">Cisco Firewalls</span>
+          <span class="tag">Check Point</span>
+          <span class="tag">IDS/IPS</span>
+          <span class="tag">VPN</span>
+          <span class="tag">Web Proxy</span>
+          <span class="tag">WAF</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Detection &amp; Response</div>
+        <div class="tags">
+          <span class="tag">Splunk</span>
+          <span class="tag">ArcSight</span>
+          <span class="tag">InsightDR</span>
+          <span class="tag">Sourcefire</span>
+          <span class="tag">Incident Response</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Endpoint &amp; Identity</div>
+        <div class="tags">
+          <span class="tag">Carbon Black</span>
+          <span class="tag">Duo MFA</span>
+          <span class="tag">Imperva</span>
+          <span class="tag">Proofpoint</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <p class="section-label">Certifications</p>
+      <ul class="cert-list">
+        <li>Zscaler Digital Transformation Admin <span class="cert-year">2026</span></li>
+        <li>EC-Council Certified Ethical Hacker (CEH) <span class="cert-year">2019</span></li>
+        <li>SANS SEC401: Security Essentials <span class="cert-year">2016</span></li>
+        <li>SANS SEC504: Hacker Tools &amp; Incident Handling <span class="cert-year">2017</span></li>
+        <li>SANS SEC510: Continuous Monitoring <span class="cert-year">2019</span></li>
+        <li>WhiteHat OWASP Top Ten / Threat Modeling <span class="cert-year">2018</span></li>
+        <li>Imperva SecureSphere Admin <span class="cert-year">2017</span></li>
+        <li>Proofpoint Accredited Engineer <span class="cert-year">2015</span></li>
+        <li>Microsoft Certified Professional <span class="cert-year">2011</span></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <p class="section-label">Education</p>
+      <div class="edu-name">Northern Arizona University</div>
+      <div class="edu-detail">Bachelor's Degree, 2006</div>
+    </div>
+
+  </aside>
+</main>
+
+<footer>
+  David E. Holle II · daveholle@outlook.com · 928-699-1474
+</footer>
 
 </body>
 </html>

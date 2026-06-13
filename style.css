@@ -1,79 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #0f1117;
+  --ink-soft:  #4a5060;
+  --ink-muted: #8a90a0;
+  --rule:      #d8dce6;
+  --bg:        #f7f8fa;
+  --surface:   #ffffff;
+  --accent:    #1a56db;      /* electric blue — network signal */
+  --accent2:   #0d3a8c;
+  --tag-bg:    #e8edf8;
+  --tag-text:  #1a3a7a;
+  --mono:      'IBM Plex Mono', monospace;
+  --sans:      'Inter', sans-serif;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f7f7f7;
-    color: #333;
-    line-height: 1.6;
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-.hero {
-    background: #0a0f24;
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
+/* ── HEADER ─────────────────────────────── */
+header {
+  background: var(--ink);
+  color: #fff;
+  padding: 3.5rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+/* Subtle circuit-trace background lines */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(26,86,219,.12) 1px, transparent 1px),
+    linear-gradient(0deg,  rgba(26,86,219,.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
 }
 
-.hero h2 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin-bottom: 20px;
+.header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background: #4a90e2;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    margin-top: 20px;
+.eyebrow {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .8rem;
 }
 
-.section {
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 0 20px;
+header h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  color: #fff;
 }
 
-.section h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #0a0f24;
+.tagline {
+  margin-top: .9rem;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.7);
+  max-width: 560px;
 }
 
-.skills {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 10px;
+.contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.6rem;
+  margin-top: 1.8rem;
 }
 
-.skills li {
-    background: white;
-    padding: 10px;
-    border-radius: 6px;
-    text-align: center;
-    border: 1px solid #ddd;
+.contact-bar a, .contact-bar span {
+  font-family: var(--mono);
+  font-size: .82rem;
+  color: rgba(255,255,255,.65);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  transition: color .2s;
 }
 
-.project {
-    background: white;
-    padding: 20px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
+.contact-bar a:hover { color: #fff; }
+
+.contact-bar .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
 }
 
+/* ── LAYOUT ─────────────────────────────── */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  main { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ── SECTION LABELS ─────────────────────── */
+.section-label {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ── SUMMARY ─────────────────────────────── */
+.summary p {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+/* ── EXPERIENCE ──────────────────────────── */
+.experience { margin-top: 2.8rem; }
+
+.job { margin-bottom: 2.4rem; }
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: .2rem;
+  margin-bottom: .2rem;
+}
+
+.job-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.job-dates {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  padding-top: .15rem;
+}
+
+.job-company {
+  font-size: .88rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: .75rem;
+}
+
+.job-company span {
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.job ul {
+  list-style: none;
+  padding: 0;
+}
+
+.job ul li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: .93rem;
+  color: var(--ink-soft);
+  margin-bottom: .42rem;
+  line-height: 1.6;
+}
+
+.job ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: .7rem;
+  top: .25em;
+}
+
+.job-divider {
+  height: 1px;
+  background: var(--rule);
+  margin-bottom: 2.4rem;
+}
+
+/* ── SIDEBAR ─────────────────────────────── */
+.sidebar { display: flex; flex-direction: column; gap: 2.4rem; }
+
+.sidebar-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.4rem 1.4rem 1.5rem;
+}
+
+/* Skills */
+.skill-group { margin-bottom: 1.1rem; }
+.skill-group:last-child { margin-bottom: 0; }
+
+.skill-group-name {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: .45rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.tag {
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: .76rem;
+  font-weight: 500;
+  padding: .22rem .6rem;
+  border-radius: 4px;
+}
+
+/* Certs */
+.cert-list { list-style: none; }
+
+.cert-list li {
+  font-size: .85rem;
+  color: var(--ink-soft);
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.4;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .6rem;
+}
+
+.cert-list li:last-child { border-bottom: none; }
+
+.cert-year {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+/* Education */
+.edu-name { font-size: .93rem; font-weight: 600; color: var(--ink); }
+.edu-detail { font-size: .83rem; color: var(--ink-muted); margin-top: .2rem; }
+
+/* ── FOOTER ─────────────────────────────── */
 footer {
-    text-align: center;
-    padding: 20px;
-    background: #0a0f24;
-    color: white;
-    margin-top: 40px;
+  text-align: center;
+  padding: 1.5rem;
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--rule);
+  max-width: 860px;
+  margin: 0 auto;
 }
