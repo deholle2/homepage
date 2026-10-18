@@ -1,91 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dave Holle | Cybersecurity Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dave Holle is a cybersecurity and applied AI professional focused on Zero Trust, secure networking, cloud security, and practical AI research.">
+  <meta name="theme-color" content="#0b1018">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta property="og:title" content="Dave Holle | Cybersecurity + Applied AI">
+  <meta property="og:description" content="Secure systems. Useful AI. Less theater.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://daveholle.us/">
+  <title>Dave Holle | Cybersecurity + Applied AI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>Dave Holle</h1>
-        <h2>Cybersecurity & IT Professional</h2>
-        <p>Zero Trust • Zscaler • Network Security • CISSP (In Progress)</p>
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
-    </section>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Dave Holle, home">
+      <span class="brand-mark" aria-hidden="true">DH</span>
+      <span>Dave Holle</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#expertise">Expertise</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a class="nav-cta" href="mailto:daveholle@outlook.com?subject=Cybersecurity%20or%20AI%20conversation">Let's talk</a>
+    </nav>
+  </header>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-        <h3>About Me</h3>
-        <p>
-            I'm a cybersecurity professional focused on Zero Trust architecture, secure network design, 
-            and cloud‑based security solutions. I work extensively with Zscaler technologies and am 
-            actively preparing for the CISSP certification. I enjoy solving complex security challenges 
-            and building resilient, scalable systems.
-        </p>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-        <h3>Skills</h3>
-        <ul class="skills">
-            <li>Zscaler ZIA / ZPA</li>
-            <li>Zero Trust Architecture</li>
-            <li>Network Security</li>
-            <li>Firewall & VPN Technologies</li>
-            <li>Identity & Access Management</li>
-            <li>SIEM / Log Analysis</li>
-            <li>Cloud Security</li>
-            <li>CISSP (In Progress)</li>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Cybersecurity + applied AI</p>
+        <h1 id="hero-title">Secure systems.<br><em>Useful AI.</em><br>Less theater.</h1>
+        <p class="hero-lede">I connect Zero Trust architecture, cloud security, and applied AI research to build systems that are resilient, understandable, and ready for the real world.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:daveholle@outlook.com?subject=Cybersecurity%20or%20AI%20conversation">Start a conversation <span aria-hidden="true">↗</span></a>
+          <a class="button button-quiet" href="#expertise">Explore my work <span aria-hidden="true">↓</span></a>
+        </div>
+        <ul class="signal-list" aria-label="Core capabilities">
+          <li>Zscaler ZIA / ZPA</li>
+          <li>Zero Trust networking</li>
+          <li>AI systems research</li>
+          <li>AWS delivery</li>
         </ul>
+      </div>
+
+      <div class="hero-system" aria-label="A visual model of Dave's security approach">
+        <div class="system-topline">
+          <span>OPERATING MODEL</span>
+          <span class="live-label">LIVE / ITERATIVE</span>
+        </div>
+        <svg class="network-map" viewBox="0 0 520 330" role="img" aria-labelledby="network-title network-desc">
+          <title id="network-title">Identity-centered security model</title>
+          <desc id="network-desc">Identity, context, policy, telemetry, and people connect through a verified trust path.</desc>
+          <defs>
+            <linearGradient id="path-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#b8ff6a"/>
+              <stop offset="1" stop-color="#60d8ff"/>
+            </linearGradient>
+          </defs>
+          <g class="map-grid" aria-hidden="true">
+            <path d="M20 55H500M20 125H500M20 195H500M20 265H500"/>
+            <path d="M90 20V310M190 20V310M290 20V310M390 20V310"/>
+          </g>
+          <g class="map-lines" aria-hidden="true">
+            <path d="M82 86L190 154L306 88L427 154L350 252L190 240L82 86"/>
+            <path d="M190 154L190 240M306 88L350 252M190 154L427 154"/>
+          </g>
+          <g class="node node-a" transform="translate(82 86)">
+            <circle r="27"/><circle class="pulse" r="34"/><text text-anchor="middle" y="4">ID</text>
+          </g>
+          <g class="node node-b" transform="translate(190 154)">
+            <circle r="35"/><circle class="pulse" r="44"/><text text-anchor="middle" y="4">POLICY</text>
+          </g>
+          <g class="node node-c" transform="translate(306 88)">
+            <circle r="28"/><text text-anchor="middle" y="4">CTX</text>
+          </g>
+          <g class="node node-d" transform="translate(427 154)">
+            <circle r="31"/><text text-anchor="middle" y="4">DATA</text>
+          </g>
+          <g class="node node-e" transform="translate(350 252)">
+            <circle r="34"/><text text-anchor="middle" y="4">SIGNAL</text>
+          </g>
+          <g class="node node-f" transform="translate(190 240)">
+            <circle r="29"/><text text-anchor="middle" y="4">HUMAN</text>
+          </g>
+          <circle class="packet" cx="190" cy="154" r="5"/>
+        </svg>
+        <ol class="system-steps">
+          <li><span>01</span><strong>Identify</strong><small>user, device, context</small></li>
+          <li><span>02</span><strong>Decide</strong><small>policy before position</small></li>
+          <li><span>03</span><strong>Observe</strong><small>signals, feedback, outcomes</small></li>
+        </ol>
+      </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-        <h3>Projects</h3>
-
-        <div class="project">
-            <h4>Zero Trust Home Lab</h4>
-            <p>
-                Built a full Zero Trust environment using Zscaler ZPA, identity‑based segmentation, 
-                and policy‑driven access controls. Demonstrated secure remote access without VPNs.
-            </p>
-        </div>
-
-        <div class="project">
-            <h4>Network Hardening & Monitoring</h4>
-            <p>
-                Implemented network segmentation, firewall rule optimization, and SIEM‑based alerting 
-                to improve visibility and reduce attack surface.
-            </p>
-        </div>
-
-        <div class="project">
-            <h4>Secure Cloud Access Architecture</h4>
-            <p>
-                Designed a scalable cloud access model using Zero Trust principles, identity‑aware 
-                routing, and encrypted traffic inspection.
-            </p>
-        </div>
+    <section class="statement" aria-label="Professional approach">
+      <p>I work where <strong>identity meets infrastructure</strong>—and where promising AI ideas have to survive contact with security, operations, and people.</p>
     </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-        <h3>Contact</h3>
-        <p>Let’s connect.</p>
-        <p>
-            <a href="mailto:daveholle@outlook.com">Email</a> •
-            <a href="https://www.linkedin.com/in/dholle2">LinkedIn</a> •
-            <a href="https://github.com/deholle2">GitHub</a>
-        </p>
+    <section class="section expertise" id="expertise" aria-labelledby="expertise-title">
+      <div class="section-heading">
+        <p class="eyebrow">What I bring</p>
+        <h2 id="expertise-title">Strategy that can make it into production.</h2>
+        <p>Architecture is only valuable when teams can operate it. My work connects the control plane, the network, the telemetry, and the human experience.</p>
+      </div>
+      <div class="expertise-grid">
+        <article class="expertise-card featured">
+          <span class="card-number">01</span>
+          <h3>Zero Trust networking</h3>
+          <p>Identity-aware access, segmentation, Zscaler ZIA/ZPA, and policy design that replaces broad network trust with explicit decisions.</p>
+          <ul>
+            <li>Secure access architecture</li>
+            <li>Identity and device context</li>
+            <li>Policy-driven connectivity</li>
+          </ul>
+        </article>
+        <article class="expertise-card">
+          <span class="card-number">02</span>
+          <h3>Security operations</h3>
+          <p>Network hardening, firewall and VPN technologies, IAM, SIEM/log analysis, and cloud security with an operator's eye for evidence.</p>
+        </article>
+        <article class="expertise-card">
+          <span class="card-number">03</span>
+          <h3>Applied AI research</h3>
+          <p>Research into assistants and agents that support analysis and automation—with evaluation, guardrails, and human review built in.</p>
+        </article>
+        <article class="expertise-card">
+          <span class="card-number">04</span>
+          <h3>Product engineering</h3>
+          <p>Turning ideas into working web, iOS, and AWS systems; testing the seams where architecture diagrams usually stop.</p>
+        </article>
+      </div>
     </section>
 
-    <footer>
-        <p>© 2026 Dave Holle</p>
-    </footer>
+    <section class="section research" id="research" aria-labelledby="research-title">
+      <div class="research-label">
+        <p class="eyebrow">Independent research</p>
+        <span class="research-index">R / 01</span>
+      </div>
+      <div class="research-main">
+        <h2 id="research-title">AI that earns trust.</h2>
+        <p class="research-lede">The useful question is not “Can AI do this?” It is “How do we know when it works, when it fails, and when a person should take over?”</p>
+        <div class="research-topics">
+          <article>
+            <h3>Secure use of AI</h3>
+            <p>Threat models, data boundaries, identity, permissions, and approval points for AI-enabled workflows.</p>
+          </article>
+          <article>
+            <h3>Agent reliability</h3>
+            <p>Evaluation, failure analysis, observability, and feedback loops that make autonomous behavior reviewable.</p>
+          </article>
+          <article>
+            <h3>Practical augmentation</h3>
+            <p>Turning security expertise into repeatable workflows without removing judgment from the humans accountable for outcomes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Experience, distilled</p>
+          <h2 id="experience-title">A résumé should show a pattern.</h2>
+        </div>
+        <p>Mine is consistent: understand the system, reduce implicit trust, make the controls operable, and keep learning from the evidence.</p>
+      </div>
+      <div class="experience-track">
+        <article><span>ARCHITECT</span><h3>Zero Trust &amp; secure access</h3><p>Identity-aware architecture, Zscaler technologies, segmentation, and secure cloud access models.</p></article>
+        <article><span>HARDEN</span><h3>Networks &amp; controls</h3><p>Network security, firewalls, VPNs, IAM, logging, and monitoring focused on reducing attack surface.</p></article>
+        <article><span>OPERATE</span><h3>Evidence &amp; resilience</h3><p>SIEM/log analysis, troubleshooting, feedback, and operational visibility that support better decisions.</p></article>
+        <article><span>RESEARCH</span><h3>AI &amp; continuous learning</h3><p>Applied AI research and ongoing CISSP preparation, connecting emerging capability to security fundamentals.</p></article>
+      </div>
+      <p class="resume-note">Detailed employment history and references are available directly. <a href="mailto:daveholle@outlook.com?subject=Resume%20request">Request my résumé →</a></p>
+    </section>
+
+    <section class="section personal-work" id="work" aria-labelledby="personal-work-title">
+      <div class="personal-project">
+        <div class="personal-project-label">
+          <p class="eyebrow">Personal project</p>
+          <span>WEB / iOS / AWS</span>
+        </div>
+        <div class="personal-project-copy">
+          <h2 id="personal-work-title">Dave's Euchre</h2>
+          <p>A side project where I explore reliable real-time systems, cross-device behavior, accessibility, and operational feedback—built with Node/TypeScript, SwiftUI, and AWS.</p>
+        </div>
+        <a class="project-arrow" href="https://euchre.daveholle.us" target="_blank" rel="noopener noreferrer" aria-label="Play Dave's Euchre">↗</a>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">Let's build the trustworthy version</p>
+      <h2 id="contact-title">Need someone who can bridge security architecture, hands-on delivery, and practical AI?</h2>
+      <div class="contact-actions">
+        <a class="button button-light" href="mailto:daveholle@outlook.com?subject=Cybersecurity%20or%20AI%20conversation">daveholle@outlook.com <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/dholle2" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/deholle2" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Dave Holle</span>
+    <span>Cybersecurity / Zero Trust / Applied AI</span>
+    <a href="/.well-known/security.txt">Security contact</a>
+  </footer>
 </body>
 </html>
